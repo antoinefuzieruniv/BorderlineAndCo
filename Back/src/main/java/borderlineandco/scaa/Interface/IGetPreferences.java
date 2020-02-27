@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface IGetPreferences {
 
-    List<ConnectionEntity> getPreferedConnexions();
+    List<ConnectionEntity> getPreferedConnections();
 
 }
