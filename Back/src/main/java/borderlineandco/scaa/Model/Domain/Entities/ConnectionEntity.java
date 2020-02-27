@@ -12,6 +12,9 @@ public class ConnectionEntity {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
+    /**
+     * port 
+     */
     @NotNull
     private PortEntity portIn;
 
