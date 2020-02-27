@@ -17,6 +17,11 @@ public class UserController implements ISelect, IProvide, IDisplay {
     }
 
     @Override
+    public List<ComponentEntity> displayFirstComponentList() {
+        return null;
+    }
+
+    @Override
     public void restart() {
 
     }
