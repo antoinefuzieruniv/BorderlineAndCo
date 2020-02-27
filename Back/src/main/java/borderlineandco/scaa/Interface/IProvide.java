@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface IProvide {
 
-    List<ComponentEntity> provideComponents();
+    List<ComponentEntity> provideFirstListComponents();
 }
