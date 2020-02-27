@@ -1,11 +1,7 @@
 package borderlineandco.scaa.Model.Domain.Entities;
 
-import MASInfrastructure.Agent.InfraAgent;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -20,9 +16,18 @@ public class ComponentEntity {
     @NotNull
     private String name;
 
+    @OneToMany
     List<PortEntity> listPortIn;
 
+    @OneToMany
     List<PortEntity> listPortOut;
+
+    @ManyToMany
+    @JoinTable(
+            name = "assembly_composant",
+            joinColumns = @JoinColumn(name = "composant_id"),
+            inverseJoinColumns = @JoinColumn(name = "assembly_id"))
+    List<AssemblyEntity> assemblys;
 
     public Long getId() {
         return id;

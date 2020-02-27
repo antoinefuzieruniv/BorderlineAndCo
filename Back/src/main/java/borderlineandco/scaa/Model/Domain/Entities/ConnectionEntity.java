@@ -1,11 +1,9 @@
 package borderlineandco.scaa.Model.Domain.Entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 public class ConnectionEntity {
@@ -14,11 +12,21 @@ public class ConnectionEntity {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
+    /**
+     * port 
+     */
     @NotNull
     private PortEntity portIn;
 
     @NotNull
     private  PortEntity portOut;
+
+    @ManyToMany
+    @JoinTable(
+            name = "assembly_connection",
+            joinColumns = @JoinColumn(name = "connection_id"),
+            inverseJoinColumns = @JoinColumn(name = "assembly_id"))
+    private List<AssemblyEntity> assemblyEntityList;
 
     public Long getId() {
         return id;
