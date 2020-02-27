@@ -9,7 +9,5 @@ public interface IDisplay {
 
     AssemblyEntity displayAssembly();
 
-    List<ComponentEntity> displayFirstComponentList();
-
     void restart();
 }

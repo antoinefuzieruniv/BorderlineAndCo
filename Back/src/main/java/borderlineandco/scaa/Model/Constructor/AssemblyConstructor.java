@@ -1,11 +1,6 @@
 package borderlineandco.scaa.Model.Constructor;
 
-import MASInfrastructure.Agent.InfraAgent;
-import MASInfrastructure.Infrastructure;
-import MASInfrastructure.State.LifeCycle;
-import MASInfrastructure.exemple.CommunicationParMessage;
-import MASInfrastructure.exemple.MonAgent;
-import borderlineandco.scaa.Interface.ICreateSMA;
+import borderlineandco.scaa.Interface.ICreateMAS;
 import borderlineandco.scaa.Interface.ISelect;
 import borderlineandco.scaa.Model.Agent.MyAgent;
 import borderlineandco.scaa.Model.Domain.Entities.ComponentEntity;
@@ -37,12 +32,12 @@ public class AssemblyConstructor implements ICreateSMA, ISelect {
     }
 
     @Override
-    public ComponentEntity chooseComponent() {
-        return null;
+    public void chooseComponent(ComponentEntity chosenComponent) {
+
     }
 
     @Override
-    public void startAssembly() {
+    public void startAssemblyConstruction(ComponentEntity chosenComponent, List<ComponentEntity> componentsLeft) {
 
     }
 }
