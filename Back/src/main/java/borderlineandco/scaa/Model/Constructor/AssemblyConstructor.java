@@ -2,11 +2,13 @@ package borderlineandco.scaa.Model.Constructor;
 
 import borderlineandco.scaa.Interface.ICreateMAS;
 import borderlineandco.scaa.Interface.ISelect;
-import borderlineandco.scaa.Model.Agent.MyAgent;
+import borderlineandco.scaa.Model.Domain.Entities.AssemblyEntity;
 import borderlineandco.scaa.Model.Domain.Entities.ComponentEntity;
+import org.springframework.stereotype.Service;
 
-public class AssemblyConstructor implements ICreateSMA, ISelect {
-
+import java.util.List;
+@Service
+public class AssemblyConstructor implements ICreateMAS, ISelect {
 
     @Override
     public MyAgent createAgentByComponent(ComponentEntity c) {
@@ -37,7 +39,7 @@ public class AssemblyConstructor implements ICreateSMA, ISelect {
     }
 
     @Override
-    public void startAssemblyConstruction(ComponentEntity chosenComponent, List<ComponentEntity> componentsLeft) {
-
+    public AssemblyEntity assemblyConstruction(ComponentEntity chosenComponent, List<ComponentEntity> componentsLeft) {
+        return null;
     }
 }
