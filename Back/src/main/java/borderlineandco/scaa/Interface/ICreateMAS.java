@@ -2,9 +2,9 @@ package borderlineandco.scaa.Interface;
 
 import borderlineandco.scaa.Model.Domain.Entities.ComponentEntity;
 
-public interface ISelect {
+public interface ICreateMAS {
 
-    ComponentEntity chooseComponent();
+    void createAgentByComponent(ComponentEntity c);
 
-    void startAssembly();
+    void launchMAS();
 }
