@@ -14,9 +14,11 @@ public class ComponentEntity {
 
     @NotNull
     private String name;
-    
+
+    @OneToMany
     List<PortEntity> listPortIn;
 
+    @OneToMany
     List<PortEntity> listPortOut;
 
     @ManyToMany
