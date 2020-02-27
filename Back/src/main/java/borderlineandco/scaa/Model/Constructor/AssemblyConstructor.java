@@ -3,12 +3,13 @@ package borderlineandco.scaa.Model.Constructor;
 import borderlineandco.scaa.Interface.ICreateMAS;
 import borderlineandco.scaa.Interface.IGetPreferences;
 import borderlineandco.scaa.Interface.ISaveChoice;
+import borderlineandco.scaa.Interface.ISelect;
 import borderlineandco.scaa.Model.Domain.Entities.ComponentEntity;
 import borderlineandco.scaa.Model.Domain.Entities.ConnectionEntity;
 
 import java.util.List;
 
-public class AssemblyConstructor implements ICreateMAS, IGetPreferences, ISaveChoice {
+public class AssemblyConstructor implements ICreateMAS, ISelect {
 
     @Override
     public void createAgentByComponent(ComponentEntity c) {
@@ -21,12 +22,12 @@ public class AssemblyConstructor implements ICreateMAS, IGetPreferences, ISaveCh
     }
 
     @Override
-    public List<ConnectionEntity> getPreferedConnections() {
+    public ComponentEntity chooseComponent() {
         return null;
     }
 
     @Override
-    public void saveChoice(ConnectionEntity connectionEntity) {
+    public void startAssembly() {
 
     }
 }
