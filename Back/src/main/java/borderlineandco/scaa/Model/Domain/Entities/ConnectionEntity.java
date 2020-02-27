@@ -20,4 +20,27 @@ public class ConnectionEntity {
     @NotNull
     private  PortEntity portOut;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public PortEntity getPortIn() {
+        return portIn;
+    }
+
+    public void setPortIn(PortEntity portIn) {
+        this.portIn = portIn;
+    }
+
+    public PortEntity getPortOut() {
+        return portOut;
+    }
+
+    public void setPortOut(PortEntity portOut) {
+        this.portOut = portOut;
+    }
 }
