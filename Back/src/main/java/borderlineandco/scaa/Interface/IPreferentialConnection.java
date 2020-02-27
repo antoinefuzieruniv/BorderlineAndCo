@@ -1,4 +1,4 @@
 package borderlineandco.scaa.Interface;
 
-public interface IPreferentialConnexion {
+public interface IPreferentialConnection {
 }
