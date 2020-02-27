@@ -1,9 +1,6 @@
 package borderlineandco.scaa.Model.Domain.Entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -13,8 +10,10 @@ public class AssemblyEntity {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
+    @ManyToMany
     private List<ComponentEntity> listComponent;
 
+    @ManyToMany()
     private List<ConnectionEntity> listConnection;
 
     public Long getId() {
