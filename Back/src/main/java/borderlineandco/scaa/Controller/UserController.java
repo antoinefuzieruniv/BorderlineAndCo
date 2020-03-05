@@ -9,6 +9,8 @@ import borderlineandco.scaa.Model.Domain.Entities.ComponentEntity;
 import borderlineandco.scaa.Model.Domain.Services.ComponentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +32,11 @@ public class UserController implements ISelect, IProvide, IDisplay {
         provideFirstListComponents();
     }
 
+
+    @GetMapping("/getAllComponents")
     @Override
-    public List<ComponentEntity> provideFirstListComponents() {
+    public @ResponseBody
+    List<ComponentEntity> provideFirstListComponents() {
         return componentService.provideFirstListComponents();
     }
 
