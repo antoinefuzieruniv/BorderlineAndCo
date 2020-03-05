@@ -7,10 +7,12 @@ import borderlineandco.scaa.Model.Domain.Entities.ConnectionEntity;
 import borderlineandco.scaa.Model.Domain.Services.ConnectionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
+@CrossOrigin(origins = "http://localhost:8000")
 public class ExpertController implements IChooseConnection, IPreferentialConnection {
     @Autowired
     ConnectionService connectionService;
@@ -18,18 +20,27 @@ public class ExpertController implements IChooseConnection, IPreferentialConnect
     AssemblyConstructor assemblyConstructor;
 
     @Override
-    public List<ConnectionEntity> provideConnections() {
+    @GetMapping("/ExpertController/getConnections")
+    public @ResponseBody List<ConnectionEntity> provideConnections() {
         return assemblyConstructor.provideConnections();
     }
 
     @Override
     public void selectConnection(ConnectionEntity chosenConnection) {
-        connectionService.selectConnection(chosenConnection);
+        //SHOULD NOT BE USED, USE THE ONE IN ASSEMBLY CONSTRUCTOR
+    }
+
+
+    @GetMapping("/ExpertController/SelectConnection")
+    public void selectConnection(@RequestParam(value = "chosenConnection") int chosenConnection, @RequestParam(value = "saveChoice") boolean save) {
+        ConnectionEntity connectionEntity = connectionService.getConnectionById((long) chosenConnection);
+        assemblyConstructor.selectConnection(connectionEntity);
+        if (save)
+            storePreferentialConnection(connectionEntity);
     }
 
     @Override
     public void storePreferentialConnection(ConnectionEntity chosenConnection) {
-        //Probably never used since it is already in selectConnection
         connectionService.storePreferentialConnection(chosenConnection);
     }
 }

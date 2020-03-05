@@ -80,12 +80,12 @@ public class AssemblyConstructor implements ICreateMAS, ISelect, IChooseConnecti
 
     @Override
     public List<ConnectionEntity> provideConnections() {
-        return null;
+        //TODO should be used in case if there is a multiple choice, for now it's just a mock
+        return connectionService.getAllConnections();
     }
 
     @Override
     public void selectConnection(ConnectionEntity chosenConnection) {
         //TODO treat value for construction
-        connectionService.selectConnection(chosenConnection);
     }
 }
