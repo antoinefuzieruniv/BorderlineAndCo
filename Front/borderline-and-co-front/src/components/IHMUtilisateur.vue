@@ -20,26 +20,39 @@
           <b-row>
             <b-col class="border-right">
               <p>Services fournis :</p>
-              <div v-for="value in componentSelected.listPortOut" :key="value.id">
-                {{value.name}} : {{value.type}}
+              <div v-for="port in componentSelected.listPortOut" :key="port.id">
+                {{port.name}} : {{port.type}}
               </div>
             </b-col>
             <b-col>
               <p>Services requis :</p>
-              <div v-for="value in componentSelected.listPortIn" :key="value.id">
-                {{value.name}} : {{value.type}}
+              <div v-for="port in componentSelected.listPortIn" :key="port.id">
+                {{port.name}} : {{port.type}}
               </div>
             </b-col>
           </b-row>
         </div>
 
-         <button v-on:click="sendComponentToBack(componentSelected)">Construire</button>
-        <router-link
-          tag="b-button"
-          class="float-right"
-          :to="{ name: 'IHMExpert', params: { componentSelected: componentSelected } }"
-        >Construire l'application</router-link>
+        <button v-on:click="sendComponentToBack(componentSelected)">Construire</button>
       </b-form>
+      <b>Application construite</b>
+      <div>
+         <p>Composants :</p>
+        <div v-for="component in assemblyReturned.listComponent" :key="component.id">
+          {{component.name}} (
+              <div v-for="port in component.listPortOut" :key="port.id">
+                {{port.name}}-{{port.type}}
+              </div>,
+              <div v-for="port in component.listPortIn" :key="port.id">
+                {{port.name}}-{{port.type}}
+              </div>
+          )
+        </div>
+        <p>Connexions :</p>
+        <div v-for="connection in assemblyReturned.listConnection" :key="connection.id">
+          Port entrant : {{connection.portIn.name}}-{{connection.portOut.type}} Port sortant : {{connection.portOut.name}}-{{connection.portOut.type}}
+        </div>
+      </div>
     </b-card-text>
   </b-card>
 </template>
@@ -52,7 +65,8 @@ export default {
     return {
       msg: "Welcome to Your Vue.js App",
       options: [],
-      componentSelected: ""
+      componentSelected: "",
+      assemblyReturned: ""
     };
   },
   mounted() {
@@ -68,7 +82,7 @@ export default {
             chosenComponent: componentSelected.id
           }
         })
-        .then(response => (alert(response.data)));
+        .then(response => (this.assemblyReturned = response.data));
     }
   }
 };
