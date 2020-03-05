@@ -1,14 +1,18 @@
 package borderlineandco.scaa.Model.Constructor;
 
-import borderlineandco.scaa.Interface.ICreateMAS;
-import borderlineandco.scaa.Interface.ISelect;
-import borderlineandco.scaa.Model.Domain.Entities.AssemblyEntity;
-import borderlineandco.scaa.Model.Domain.Entities.ComponentEntity;
-import org.springframework.stereotype.Service;
 
-import java.util.List;
-@Service
-public class AssemblyConstructor implements ICreateMAS, ISelect {
+import MASInfrastructure.Agent.InfraAgent;
+import MASInfrastructure.Infrastructure;
+import MASInfrastructure.State.LifeCycle;
+import MASInfrastructure.exemple.CommunicationParMessage;
+import MASInfrastructure.exemple.MonAgent;
+import borderlineandco.scaa.Interface.ICreateSMA;
+import borderlineandco.scaa.Interface.ISelect;import borderlineandco.scaa.Model.Agent.MyAgent;
+import borderlineandco.scaa.Model.Domain.Entities.ComponentEntity;
+
+
+public class AssemblyConstructor implements ICreateSMA, ISelect {
+
 
     @Override
     public MyAgent createAgentByComponent(ComponentEntity c) {
@@ -18,7 +22,7 @@ public class AssemblyConstructor implements ICreateMAS, ISelect {
         MyAgent a1=new MyAgent(c.getName());
 
         InfraAgent infraA1=i.createInfrastructureAgent(new LifeCycle(a1.getPerception()), maCom);
-        // la création ajoute l'agent dans l'infrastructure
+        // la cr�ation ajoute l'agent dans l'infrastructure
 
         a1.setInfraAgent(infraA1);
         a1.getPerception().setInfraAgent(infraA1);
@@ -34,12 +38,12 @@ public class AssemblyConstructor implements ICreateMAS, ISelect {
     }
 
     @Override
-    public void chooseComponent(ComponentEntity chosenComponent) {
-
+    public ComponentEntity chooseComponent() {
+        return null;
     }
 
     @Override
-    public AssemblyEntity assemblyConstruction(ComponentEntity chosenComponent, List<ComponentEntity> componentsLeft) {
-        return null;
+    public void startAssembly() {
+
     }
 }
