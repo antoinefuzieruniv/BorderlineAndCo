@@ -3,36 +3,49 @@ package borderlineandco.scaa.Controller;
 import borderlineandco.scaa.Interface.IDisplay;
 import borderlineandco.scaa.Interface.IProvide;
 import borderlineandco.scaa.Interface.ISelect;
+import borderlineandco.scaa.Model.Constructor.AssemblyConstructor;
 import borderlineandco.scaa.Model.Domain.Entities.AssemblyEntity;
 import borderlineandco.scaa.Model.Domain.Entities.ComponentEntity;
+import borderlineandco.scaa.Model.Domain.Services.ComponentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class UserController implements ISelect, IProvide, IDisplay {
+    @Autowired
+    AssemblyConstructor assemblyConstructor;
+    @Autowired
+    ComponentService componentService;
+
     @Override
-    public AssemblyEntity displayAssembly() {
-        return null;
+    public void displayAssembly(AssemblyEntity assemblyToDisplay) {
+        //TODO see how to send it to the front
     }
 
     @Override
     public void restart() {
-
+        provideFirstListComponents();
     }
 
     @Override
-    public List<ComponentEntity> provideComponents() {
-        return null;
+    public List<ComponentEntity> provideFirstListComponents() {
+        return componentService.provideFirstListComponents();
     }
 
     @Override
-    public ComponentEntity chooseComponent() {
-        return null;
+    public void chooseComponent(ComponentEntity chosenComponent) {
+        List<ComponentEntity> componentsLeft = new ArrayList<ComponentEntity>(provideFirstListComponents());
+        componentsLeft.remove(chosenComponent);
+        assemblyConstruction(chosenComponent, componentsLeft);
     }
 
     @Override
-    public void startAssembly() {
-
+    public AssemblyEntity assemblyConstruction(ComponentEntity chosenComponent, List<ComponentEntity> componentsLeft) {
+        AssemblyEntity assemblyEntity = assemblyConstructor.assemblyConstruction(chosenComponent,componentsLeft);
+        displayAssembly(assemblyEntity);
+        return assemblyEntity;
     }
 }

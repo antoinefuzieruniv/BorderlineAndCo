@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class ComponentService implements IProvide, IGetPreferences, ISaveChoice {
     @Override
-    public List<ComponentEntity> provideComponents() {
+    public List<ComponentEntity> provideFirstListComponents() {
         return null;
     }
 

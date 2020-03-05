@@ -8,5 +8,5 @@ public interface IChooseConnection {
 
     List<ConnectionEntity> provideConnections();
 
-    ConnectionEntity selectConnection();
+    void selectConnection(ConnectionEntity chosenConnection);
 }

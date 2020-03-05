@@ -1,14 +1,15 @@
 package borderlineandco.scaa.Model.Constructor;
 
+
 import MASInfrastructure.Agent.InfraAgent;
 import MASInfrastructure.Infrastructure;
 import MASInfrastructure.State.LifeCycle;
 import MASInfrastructure.exemple.CommunicationParMessage;
 import MASInfrastructure.exemple.MonAgent;
 import borderlineandco.scaa.Interface.ICreateSMA;
-import borderlineandco.scaa.Interface.ISelect;
-import borderlineandco.scaa.Model.Agent.MyAgent;
+import borderlineandco.scaa.Interface.ISelect;import borderlineandco.scaa.Model.Agent.MyAgent;
 import borderlineandco.scaa.Model.Domain.Entities.ComponentEntity;
+
 
 public class AssemblyConstructor implements ICreateSMA, ISelect {
 
@@ -21,7 +22,7 @@ public class AssemblyConstructor implements ICreateSMA, ISelect {
         MyAgent a1=new MyAgent(c.getName());
 
         InfraAgent infraA1=i.createInfrastructureAgent(new LifeCycle(a1.getPerception()), maCom);
-        // la crÃ©ation ajoute l'agent dans l'infrastructure
+        // la création ajoute l'agent dans l'infrastructure
 
         a1.setInfraAgent(infraA1);
         a1.getPerception().setInfraAgent(infraA1);

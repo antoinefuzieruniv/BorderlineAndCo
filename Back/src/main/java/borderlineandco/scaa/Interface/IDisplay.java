@@ -4,7 +4,7 @@ import borderlineandco.scaa.Model.Domain.Entities.AssemblyEntity;
 
 public interface IDisplay {
 
-    AssemblyEntity displayAssembly();
+    void displayAssembly(AssemblyEntity assemblyToDisplay);
 
     void restart();
 }
