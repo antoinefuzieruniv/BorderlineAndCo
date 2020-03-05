@@ -1,11 +1,9 @@
 package borderlineandco.scaa.Model.Domain.Entities;
 
-
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.List;
-
 
 @Entity
 public class ComponentEntity {
