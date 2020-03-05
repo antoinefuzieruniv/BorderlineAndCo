@@ -17,6 +17,14 @@ public class AssemblyEntity {
     @ManyToMany()
     private List<ConnectionEntity> listConnection;
 
+    public AssemblyEntity() {
+    }
+
+    public AssemblyEntity(List<ComponentEntity> listComponent, List<ConnectionEntity> listConnection) {
+        this.listComponent = listComponent;
+        this.listConnection = listConnection;
+    }
+
     public Long getId() {
         return id;
     }

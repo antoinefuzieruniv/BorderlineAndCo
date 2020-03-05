@@ -6,9 +6,9 @@
           id="input-group-3"
           class="w-50 mx-auto mb-5"
           label="Liste des composants:"
-          label-for="input-3"
+          label-for="component-selector"
         >
-          <b-form-select id="input-3" v-model="componentSelected" required>
+          <b-form-select id="component-selector" v-model="componentSelected" required>
             <b-form-select-option
               v-for="(value, index) in options"
               :value="value"
@@ -20,41 +20,56 @@
           <b-row>
             <b-col class="border-right">
               <p>Services fournis :</p>
-              <div v-for="value in componentSelected.services_fournis" :key="value">{{value}}</div>
+              <div v-for="value in componentSelected.listPortOut" :key="value.id">
+                {{value.name}} : {{value.type}}
+              </div>
             </b-col>
             <b-col>
               <p>Services requis :</p>
-              <div v-for="value in componentSelected.services_requis" :key="value">{{value}}</div>
+              <div v-for="value in componentSelected.listPortIn" :key="value.id">
+                {{value.name}} : {{value.type}}
+              </div>
             </b-col>
           </b-row>
         </div>
 
-          <router-link tag="b-button" class="float-right" :to="{ name: 'IHMExpert', params: { componentSelected: componentSelected } }">Construire l'application</router-link>
+         <button v-on:click="sendComponentToBack(componentSelected)">Construire</button>
+        <router-link
+          tag="b-button"
+          class="float-right"
+          :to="{ name: 'IHMExpert', params: { componentSelected: componentSelected } }"
+        >Construire l'application</router-link>
       </b-form>
     </b-card-text>
   </b-card>
 </template>
 
 <script>
+const axios = require("axios");
 export default {
   name: "IHMUtilisateur",
   data() {
     return {
       msg: "Welcome to Your Vue.js App",
-      options: [
-        {
-          name: "C1",
-          services_fournis: ["SF1", "SF2", "SF3"],
-          services_requis: ["SR1", "SR2", "SR3"]
-        },
-        {
-          name: "C2",
-          services_fournis: ["SF11", "SF22", "SF33"],
-          services_requis: ["SR11", "SR22", "SR33"]
-        }
-      ],
+      options: [],
       componentSelected: ""
     };
+  },
+  mounted() {
+    axios
+      .get("http://localhost:8080/UserController/getAllComponents")
+      .then(response => (this.options = response.data));
+  },
+  methods: {
+    sendComponentToBack: function (componentSelected) {
+      axios
+      .get("http://localhost:8080/UserController/chooseComponent", {
+          params: {
+            chosenComponent: componentSelected.id
+          }
+        })
+        .then(response => (alert(response.data)));
+    }
   }
 };
 </script>

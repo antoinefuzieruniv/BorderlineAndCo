@@ -23,5 +23,5 @@ public class ComponentService implements IProvide {
         return componentRepository.findAll();
     }
 
-
+    public ComponentEntity getComponentById(Long id){return componentRepository.findById(id).get();}
 }
