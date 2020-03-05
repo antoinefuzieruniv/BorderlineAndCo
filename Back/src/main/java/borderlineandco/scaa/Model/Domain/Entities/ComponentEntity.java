@@ -9,6 +9,7 @@ import java.util.List;
 public class ComponentEntity {
 
     @GeneratedValue(strategy= GenerationType.AUTO)
+    @Id
     private Long id;
 
     @NotNull

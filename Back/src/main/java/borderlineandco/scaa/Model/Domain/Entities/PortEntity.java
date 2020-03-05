@@ -1,9 +1,6 @@
 package borderlineandco.scaa.Model.Domain.Entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -17,6 +14,9 @@ public class PortEntity {
     @NotNull
     @NotEmpty
     private String name;
+
+    @OneToOne
+    private ConnectionEntity connectionEntity;
 
     @NotNull
     @NotEmpty
@@ -44,5 +44,13 @@ public class PortEntity {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public ConnectionEntity getConnectionEntity() {
+        return connectionEntity;
+    }
+
+    public void setConnectionEntity(ConnectionEntity connectionEntity) {
+        this.connectionEntity = connectionEntity;
     }
 }
