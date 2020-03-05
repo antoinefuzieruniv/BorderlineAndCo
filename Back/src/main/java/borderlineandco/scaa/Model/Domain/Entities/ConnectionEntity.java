@@ -19,7 +19,7 @@ public class ConnectionEntity {
      * port 
      */
     @NotNull
-    ManyToOne
+    @ManyToOne
     private PortEntity portIn;
 
     @NotNull
