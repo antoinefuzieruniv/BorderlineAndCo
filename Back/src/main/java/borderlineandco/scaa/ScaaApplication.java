@@ -1,5 +1,6 @@
 package borderlineandco.scaa;
 
+import borderlineandco.scaa.Model.DataLoader;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

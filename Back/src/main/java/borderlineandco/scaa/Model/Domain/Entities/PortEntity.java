@@ -22,6 +22,14 @@ public class PortEntity {
     @NotEmpty
     private String type;
 
+    public PortEntity() {
+    }
+
+    public PortEntity(@NotNull @NotEmpty String name, @NotNull @NotEmpty String type) {
+        this.name = name;
+        this.type = type;
+    }
+
     public Long getId() {
         return id;
     }

@@ -31,6 +31,14 @@ public class ConnectionEntity {
             inverseJoinColumns = @JoinColumn(name = "assembly_id"))
     private List<AssemblyEntity> assemblyEntityList;
 
+    public ConnectionEntity() {
+    }
+
+    public ConnectionEntity(@NotNull PortEntity portIn, @NotNull PortEntity portOut) {
+        this.portIn = portIn;
+        this.portOut = portOut;
+    }
+
     public Long getId() {
         return id;
     }

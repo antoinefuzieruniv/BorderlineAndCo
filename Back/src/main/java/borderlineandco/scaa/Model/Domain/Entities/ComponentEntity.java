@@ -28,6 +28,15 @@ public class ComponentEntity {
             inverseJoinColumns = @JoinColumn(name = "assembly_id"))
     List<AssemblyEntity> assemblys;
 
+    public ComponentEntity() {
+    }
+
+    public ComponentEntity(@NotNull String name, List<PortEntity> listPortIn, List<PortEntity> listPortOut) {
+        this.name = name;
+        this.listPortIn = listPortIn;
+        this.listPortOut = listPortOut;
+    }
+
     public Long getId() {
         return id;
     }
