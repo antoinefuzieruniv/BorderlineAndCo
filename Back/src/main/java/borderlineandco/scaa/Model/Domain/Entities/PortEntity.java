@@ -15,6 +15,9 @@ public class PortEntity {
     @NotEmpty
     private String name;
 
+    @OneToOne
+    private ConnectionEntity connectionEntity;
+
     @NotNull
     @NotEmpty
     private String type;
@@ -44,5 +47,13 @@ public class PortEntity {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public ConnectionEntity getConnectionEntity() {
+        return connectionEntity;
+    }
+
+    public void setConnectionEntity(ConnectionEntity connectionEntity) {
+        this.connectionEntity = connectionEntity;
     }
 }

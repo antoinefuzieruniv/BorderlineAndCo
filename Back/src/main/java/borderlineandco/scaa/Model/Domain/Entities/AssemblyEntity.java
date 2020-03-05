@@ -8,6 +8,7 @@ public class AssemblyEntity {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name = "assembly_Id")
     private Long id;
 
     @ManyToMany

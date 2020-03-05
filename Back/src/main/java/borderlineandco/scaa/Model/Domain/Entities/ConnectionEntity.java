@@ -10,6 +10,7 @@ public class ConnectionEntity {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name = "connection_id")
     private Long id;
 
     @ManyToOne
@@ -19,10 +20,12 @@ public class ConnectionEntity {
      * port 
      */
     @NotNull
-    @ManyToOne
+
+    @OneToOne
     private PortEntity portIn;
 
     @NotNull
+    @OneToOne
     private  PortEntity portOut;
 
     @ManyToMany
