@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="mt-0">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
         <router-link to="/IHMUtilisateur">
           <a class="nav-link" href="#">IHM utilisateur</a>
         </router-link>

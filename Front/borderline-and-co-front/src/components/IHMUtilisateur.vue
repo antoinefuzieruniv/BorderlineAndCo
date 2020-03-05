@@ -20,7 +20,7 @@
           <b-row>
             <b-col class="border-right">
               <p>Services fournis :</p>
-              <div v-for="value in componentSelected.services_fournis" :key="value" >{{value}}</div>
+              <div v-for="value in componentSelected.services_fournis" :key="value">{{value}}</div>
             </b-col>
             <b-col>
               <p>Services requis :</p>
@@ -29,7 +29,7 @@
           </b-row>
         </div>
 
-        <b-button type="submit" class="float-right" variant="primary">Construire l'application</b-button>
+          <router-link tag="b-button" class="float-right" :to="{ name: 'IHMExpert', params: { componentSelected: componentSelected } }">Construire l'application</router-link>
       </b-form>
     </b-card-text>
   </b-card>
