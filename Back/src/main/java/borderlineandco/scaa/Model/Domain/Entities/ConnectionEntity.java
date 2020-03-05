@@ -12,10 +12,14 @@ public class ConnectionEntity {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
+    @ManyToOne
+    private ExpertEntity expertEntity;
+
     /**
      * port 
      */
     @NotNull
+    ManyToOne
     private PortEntity portIn;
 
     @NotNull

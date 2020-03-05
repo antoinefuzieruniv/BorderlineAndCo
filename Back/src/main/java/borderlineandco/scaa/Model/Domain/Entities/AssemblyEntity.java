@@ -13,7 +13,7 @@ public class AssemblyEntity {
     @ManyToMany
     private List<ComponentEntity> listComponent;
 
-    @ManyToMany()
+    @ManyToMany
     private List<ConnectionEntity> listConnection;
 
     public Long getId() {

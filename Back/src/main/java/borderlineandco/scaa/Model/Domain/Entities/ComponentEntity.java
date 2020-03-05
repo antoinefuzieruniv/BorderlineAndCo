@@ -16,11 +16,8 @@ public class ComponentEntity {
     @NotNull
     private String name;
 
-    @OneToMany
-    List<PortEntity> listPortIn;
-
-    @OneToMany
-    List<PortEntity> listPortOut;
+    @OneToMany(mappedBy = "composant")
+    List<PortEntity> listPort;
 
     @ManyToMany
     @JoinTable(
@@ -43,21 +40,5 @@ public class ComponentEntity {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<PortEntity> getListPortIn() {
-        return listPortIn;
-    }
-
-    public void setListPortIn(List<PortEntity> listPortIn) {
-        this.listPortIn = listPortIn;
-    }
-
-    public List<PortEntity> getListPortOut() {
-        return listPortOut;
-    }
-
-    public void setListPortOut(List<PortEntity> listPortOut) {
-        this.listPortOut = listPortOut;
     }
 }

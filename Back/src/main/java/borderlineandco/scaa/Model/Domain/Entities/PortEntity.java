@@ -1,9 +1,6 @@
 package borderlineandco.scaa.Model.Domain.Entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -21,6 +18,9 @@ public class PortEntity {
     @NotNull
     @NotEmpty
     private String type;
+
+    @ManyToOne
+    private ComponentEntity composant;
 
     public Long getId() {
         return id;
