@@ -50,7 +50,7 @@
         </div>
         <p><u>Connexions :</u></p>
         <div v-for="connection in assemblyReturned.listConnection" :key="connection.id">
-          {{connection.portIn.name}}-{{connection.portOut.type}}->{{connection.portOut.name}}-{{connection.portOut.type}}
+          [{{connection.portIn.name}}-{{connection.portIn.type}}]-c o-[{{connection.portOut.name}}-{{connection.portOut.type}}]
         </div>
       </div>
     </b-card-text>

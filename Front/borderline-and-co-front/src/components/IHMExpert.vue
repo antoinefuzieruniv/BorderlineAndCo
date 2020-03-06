@@ -12,12 +12,12 @@
           <b-form-select id="input-4" v-model="connectionSelected" required>
             <b-form-select-option
               v-for="connection in connections" :value=connection :key="connection.id"
-            >{{connection.portIn.name}}-{{connection.portOut.type}} -> {{connection.portOut.name}}-{{connection.portOut.type}}</b-form-select-option>
+            >{{connection.portIn.name}}-{{connection.portOut.type}} -c o- {{connection.portOut.name}}-{{connection.portOut.type}}</b-form-select-option>
           </b-form-select>
         </b-form-group>
         <div><p>Connections préférentielles enregistrées</p>
           <div v-for="connection in preferedConnections" :value=connection :key="connection.id">
-            {{connection.portIn.name}}-{{connection.portOut.type}} -> {{connection.portOut.name}}-{{connection.portOut.type}}
+            {{connection.portIn.name}}-{{connection.portOut.type}} -c o- {{connection.portOut.name}}-{{connection.portOut.type}}
           </div>
         </div>
         <b-form-checkbox
