@@ -31,6 +31,9 @@ public class ConnectionEntity {
             inverseJoinColumns = @JoinColumn(name = "assembly_id"))
     private List<AssemblyEntity> assemblyEntityList;
 
+    @ManyToOne
+    UserEntity userThatPrefers;
+
     public ConnectionEntity() {
     }
 

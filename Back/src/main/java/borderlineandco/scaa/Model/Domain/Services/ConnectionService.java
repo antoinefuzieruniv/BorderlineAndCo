@@ -5,7 +5,9 @@ import borderlineandco.scaa.Interface.IGetPreferences;
 import borderlineandco.scaa.Interface.IPreferentialConnection;
 import borderlineandco.scaa.Interface.ISaveChoice;
 import borderlineandco.scaa.Model.Domain.Entities.ConnectionEntity;
+import borderlineandco.scaa.Model.Domain.Entities.UserEntity;
 import borderlineandco.scaa.Model.Domain.Repositories.ConnectionRepository;
+import borderlineandco.scaa.Model.Domain.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,18 +17,22 @@ import java.util.List;
 public class ConnectionService implements IPreferentialConnection, IGetPreferences, ISaveChoice {
     @Autowired
     ConnectionRepository connectionRepository;
+    @Autowired
+    UserRepository userRepository;
 
     @Override
     public void storePreferentialConnection(ConnectionEntity chosenConnection) {
-        //TODO see how to manage preferential connection
-        //connectionRepository.save(chosenConnection);
+        //TODO manage user authentication, just a mock for now
+        UserEntity userEntity = userRepository.findById((long) 11).get();
+        userEntity.getPreferedConnections().add(chosenConnection);
+        userRepository.save(userEntity);
     }
 
     @Override
     public List<ConnectionEntity> getPreferedConnections() {
-        //TODO see how to manage preferential connection
-        //return connectionRepository.findAll();
-        return null;
+        //TODO manage user authentication, just a mock for now
+        UserEntity userEntity = userRepository.findById((long) 11).get();
+        return userEntity.getPreferedConnections();
     }
 
     @Override

@@ -3,9 +3,11 @@ package borderlineandco.scaa.Model;
 import borderlineandco.scaa.Model.Domain.Entities.ComponentEntity;
 import borderlineandco.scaa.Model.Domain.Entities.ConnectionEntity;
 import borderlineandco.scaa.Model.Domain.Entities.PortEntity;
+import borderlineandco.scaa.Model.Domain.Entities.UserEntity;
 import borderlineandco.scaa.Model.Domain.Repositories.ComponentRepository;
 import borderlineandco.scaa.Model.Domain.Repositories.ConnectionRepository;
 import borderlineandco.scaa.Model.Domain.Repositories.PortRepository;
+import borderlineandco.scaa.Model.Domain.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -25,6 +27,8 @@ public class DataLoader implements ApplicationRunner {
     PortRepository portRepository;
     @Autowired
     ConnectionRepository connectionRepository;
+    @Autowired
+    UserRepository userRepository;
 
     public void fillDBWithExamples(){
         PortEntity p1 = new PortEntity("port1","type1");
@@ -58,6 +62,23 @@ public class DataLoader implements ApplicationRunner {
         componentRepository.save(c3);
         componentRepository.save(c4);
         connectionRepository.save(connectionEntity2);
+
+        List<ConnectionEntity> connectionEntityList = new ArrayList<>();
+        connectionEntityList.add(connectionEntity1);
+        connectionEntityList.add(connectionEntity2);
+        UserEntity user1 = new UserEntity("Jacquie",connectionEntityList);
+
+        userRepository.save(user1);
+
+        PortEntity p5 = new PortEntity("port5","type2");
+        portsOut = new ArrayList<PortEntity>();
+        portsOut.add(p5);
+        ComponentEntity c5 = new ComponentEntity("component4",null,portsOut);
+        ConnectionEntity connectionEntity3 = new ConnectionEntity(p3,p5);
+
+        portRepository.save(p5);
+        componentRepository.save(c5);
+        connectionRepository.save(connectionEntity3);
     }
 
     @Override

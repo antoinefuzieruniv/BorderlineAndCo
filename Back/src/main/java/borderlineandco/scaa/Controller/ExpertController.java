@@ -1,6 +1,7 @@
 package borderlineandco.scaa.Controller;
 
 import borderlineandco.scaa.Interface.IChooseConnection;
+import borderlineandco.scaa.Interface.IGetPreferences;
 import borderlineandco.scaa.Interface.IPreferentialConnection;
 import borderlineandco.scaa.Model.Constructor.AssemblyConstructor;
 import borderlineandco.scaa.Model.Domain.Entities.ConnectionEntity;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:8000")
-public class ExpertController implements IChooseConnection, IPreferentialConnection {
+public class ExpertController implements IChooseConnection, IPreferentialConnection, IGetPreferences {
     @Autowired
     ConnectionService connectionService;
     @Autowired
@@ -42,5 +43,11 @@ public class ExpertController implements IChooseConnection, IPreferentialConnect
     @Override
     public void storePreferentialConnection(ConnectionEntity chosenConnection) {
         connectionService.storePreferentialConnection(chosenConnection);
+    }
+
+    @Override
+    @GetMapping("/ExpertController/getPreferedConnections")
+    public @ResponseBody List<ConnectionEntity> getPreferedConnections() {
+        return connectionService.getPreferedConnections();
     }
 }

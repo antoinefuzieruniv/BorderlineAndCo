@@ -6,7 +6,7 @@
         <b-form-group
           id="input-group-4"
           class="w-50 mx-auto mb-5"
-          label="Liste des connexions possibles:"
+          label="Liste de toutes connexions possibles:"
           label-for="input-4"
         >
           <b-form-select id="input-4" v-model="connectionSelected" required>
@@ -15,6 +15,11 @@
             >{{connection.portIn.name}}-{{connection.portOut.type}} -> {{connection.portOut.name}}-{{connection.portOut.type}}</b-form-select-option>
           </b-form-select>
         </b-form-group>
+        <div><p>Connections préférentielles enregistrées</p>
+          <div v-for="connection in preferedConnections" :value=connection :key="connection.id">
+            {{connection.portIn.name}}-{{connection.portOut.type}} -> {{connection.portOut.name}}-{{connection.portOut.type}}
+          </div>
+        </div>
         <b-form-checkbox
         id="checkbox-1" 
         v-model="saveChoice" 
@@ -37,6 +42,7 @@ export default {
     return {
       msg: "Welcome to Your Vue.js App",
       options: [],
+      preferedConnections: [],
       connectionSelected: "",
       saveChoice : false
     };
@@ -45,6 +51,9 @@ export default {
     axios
       .get("http://localhost:8080/ExpertController/getConnections")
       .then(response => (this.options = response.data));
+      axios
+      .get("http://localhost:8080/ExpertController/getPreferedConnections")
+      .then(response => (this.preferedConnections = response.data));
   },
   methods: {
     sendConnectionToBack: function (connectionSelected) {
@@ -55,7 +64,7 @@ export default {
             saveChoice: this.saveChoice
           }
         })
-        .then(response => (this.assemblyReturned = response.data));
+        .then(response => (alert("Success")));
     }
   }
 };
