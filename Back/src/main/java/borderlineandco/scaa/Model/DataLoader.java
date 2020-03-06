@@ -73,7 +73,7 @@ public class DataLoader implements ApplicationRunner {
         PortEntity p5 = new PortEntity("port5","type2");
         portsOut = new ArrayList<PortEntity>();
         portsOut.add(p5);
-        ComponentEntity c5 = new ComponentEntity("component4",null,portsOut);
+        ComponentEntity c5 = new ComponentEntity("component5",null,portsOut);
         ConnectionEntity connectionEntity3 = new ConnectionEntity(p3,p5);
 
         portRepository.save(p5);
