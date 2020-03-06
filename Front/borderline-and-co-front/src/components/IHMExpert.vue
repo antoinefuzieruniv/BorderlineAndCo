@@ -11,7 +11,7 @@
         >
           <b-form-select id="input-4" v-model="connectionSelected" required>
             <b-form-select-option
-              v-for="connection in options" :value=connection :key="connection.id"
+              v-for="connection in connections" :value=connection :key="connection.id"
             >{{connection.portIn.name}}-{{connection.portOut.type}} -> {{connection.portOut.name}}-{{connection.portOut.type}}</b-form-select-option>
           </b-form-select>
         </b-form-group>
@@ -41,7 +41,7 @@ export default {
   data() {
     return {
       msg: "Welcome to Your Vue.js App",
-      options: [],
+      connections: [],
       preferedConnections: [],
       connectionSelected: "",
       saveChoice : false
@@ -50,7 +50,7 @@ export default {
   mounted() {
     axios
       .get("http://localhost:8080/ExpertController/getConnections")
-      .then(response => (this.options = response.data));
+      .then(response => (this.connections = response.data));
       axios
       .get("http://localhost:8080/ExpertController/getPreferedConnections")
       .then(response => (this.preferedConnections = response.data));

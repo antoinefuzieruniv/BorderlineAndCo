@@ -10,7 +10,7 @@
         >
           <b-form-select id="component-selector" v-model="componentSelected" required>
             <b-form-select-option
-              v-for="(value, index) in options"
+              v-for="(value, index) in components"
               :value="value"
               :key="index"
             >{{value.name}}</b-form-select-option>
@@ -50,7 +50,7 @@
         </div>
         <p><u>Connexions :</u></p>
         <div v-for="connection in assemblyReturned.listConnection" :key="connection.id">
-          Port entrant : {{connection.portIn.name}}-{{connection.portOut.type}} Port sortant : {{connection.portOut.name}}-{{connection.portOut.type}}
+          {{connection.portIn.name}}-{{connection.portOut.type}}->{{connection.portOut.name}}-{{connection.portOut.type}}
         </div>
       </div>
     </b-card-text>
@@ -63,8 +63,7 @@ export default {
   name: "IHMUtilisateur",
   data() {
     return {
-      msg: "Welcome to Your Vue.js App",
-      options: [],
+      components: [],
       componentSelected: "",
       assemblyReturned: ""
     };
@@ -72,7 +71,7 @@ export default {
   mounted() {
     axios
       .get("http://localhost:8080/UserController/getAllComponents")
-      .then(response => (this.options = response.data));
+      .then(response => (this.components = response.data));
   },
   methods: {
     sendComponentToBack: function (componentSelected) {
