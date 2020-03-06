@@ -35,11 +35,6 @@ public class ConnectionService implements IPreferentialConnection, IGetPreferenc
         return userEntity.getPreferedConnections();
     }
 
-    @Override
-    public void saveChoice(ConnectionEntity connectionEntity) {
-        storePreferentialConnection(connectionEntity);
-    }
-
     public ConnectionEntity getConnectionById (Long id){return connectionRepository.findById(id).get();}
 
     public List<ConnectionEntity> getAllConnections() {return connectionRepository.findAll();}

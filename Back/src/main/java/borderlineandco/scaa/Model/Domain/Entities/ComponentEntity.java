@@ -68,4 +68,12 @@ public class ComponentEntity {
     public void setListPortOut(List<PortEntity> listPortOut) {
         this.listPortOut = listPortOut;
     }
+
+    public List<AssemblyEntity> getAssemblys() {
+        return assemblys;
+    }
+
+    public void setAssemblys(List<AssemblyEntity> assemblys) {
+        this.assemblys = assemblys;
+    }
 }

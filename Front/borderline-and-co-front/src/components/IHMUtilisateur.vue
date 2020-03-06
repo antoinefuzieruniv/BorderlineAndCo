@@ -37,18 +37,18 @@
       </b-form>
       <b>Application construite</b>
       <div>
-         <p>Composants :</p>
+         <p><u>Composants :</u></p>
         <div v-for="component in assemblyReturned.listComponent" :key="component.id">
           {{component.name}} (
               <div v-for="port in component.listPortOut" :key="port.id">
-                {{port.name}}-{{port.type}}
-              </div>,
+                {{port.name}}-{{port.type}},
+              </div>
               <div v-for="port in component.listPortIn" :key="port.id">
-                {{port.name}}-{{port.type}}
+                {{port.name}}-{{port.type}},
               </div>
           )
         </div>
-        <p>Connexions :</p>
+        <p><u>Connexions :</u></p>
         <div v-for="connection in assemblyReturned.listConnection" :key="connection.id">
           Port entrant : {{connection.portIn.name}}-{{connection.portOut.type}} Port sortant : {{connection.portOut.name}}-{{connection.portOut.type}}
         </div>

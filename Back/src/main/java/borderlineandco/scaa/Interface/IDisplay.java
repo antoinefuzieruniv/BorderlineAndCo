@@ -4,6 +4,5 @@ import borderlineandco.scaa.Model.Domain.Entities.AssemblyEntity;
 
 public interface IDisplay {
 
-    void restart();
-
+//In fact included in ISelect
 }

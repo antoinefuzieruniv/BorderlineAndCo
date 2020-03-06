@@ -65,4 +65,20 @@ public class ConnectionEntity {
     public void setPortOut(PortEntity portOut) {
         this.portOut = portOut;
     }
+
+    public List<AssemblyEntity> getAssemblyEntityList() {
+        return assemblyEntityList;
+    }
+
+    public void setAssemblyEntityList(List<AssemblyEntity> assemblyEntityList) {
+        this.assemblyEntityList = assemblyEntityList;
+    }
+
+    public UserEntity getUserThatPrefers() {
+        return userThatPrefers;
+    }
+
+    public void setUserThatPrefers(UserEntity userThatPrefers) {
+        this.userThatPrefers = userThatPrefers;
+    }
 }

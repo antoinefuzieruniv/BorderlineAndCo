@@ -29,26 +29,13 @@ public class AssemblyConstructor implements ICreateMAS, ISelect, IChooseConnecti
 
     @Override
     public MyAgent createAgentByComponent(ComponentEntity c) {
-        Infrastructure i = new Infrastructure();  // un scheduler et un annuaire
-        CommunicationParMessage maCom= new CommunicationParMessage(i);
-        // creation d'un agent de l'application et lien avec infra
-        MyAgent a1=new MyAgent(c.getName());
-
-        //TODO Antoine
-        /*InfraAgent infraA1=i.createInfrastructureAgent(new LifeCycle(a1.getPerception()), maCom);
-        // la cr�ation ajoute l'agent dans l'infrastructure
-
-        a1.setInfraAgent(infraA1);
-        a1.getPerception().setInfraAgent(infraA1);
-        a1.getDecision().setInfraAgent(infraA1);
-        a1.getDecision().setCommunication(i);
-*/
+        //TODO
         return null;
     }
 
     @Override
     public void launchMAS() {
-
+        //TODO
     }
 
     @Override
@@ -80,7 +67,7 @@ public class AssemblyConstructor implements ICreateMAS, ISelect, IChooseConnecti
 
     @Override
     public List<ConnectionEntity> provideConnections() {
-        //TODO should be used in case if there is a multiple choice, for now it's just a mock
+        //TODO should be used in case if there is a multiple choice during construction, for now it's just a mock
         return connectionService.getAllConnections();
     }
 

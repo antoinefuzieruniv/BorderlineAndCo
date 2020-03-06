@@ -22,11 +22,6 @@ public class UserController implements ISelect, IProvide, IDisplay {
     @Autowired
     ComponentService componentService;
 
-    @Override
-    public void restart() {
-        provideFirstListComponents();
-    }
-
 
     @GetMapping("/UserController/getAllComponents")
     @Override
@@ -38,13 +33,12 @@ public class UserController implements ISelect, IProvide, IDisplay {
 
     @Override
     public AssemblyEntity chooseComponent(ComponentEntity chosenComponent) {
-        //SHOULD NOT BE USED, USE THE ONE IN COMPONENT SERVICE
-        return null;
+        return assemblyConstructor.chooseComponent(chosenComponent);
     }
 
 
     @GetMapping("/UserController/chooseComponent")
     public  @ResponseBody AssemblyEntity chosenComponent(@RequestParam(value = "chosenComponent") int chosenComponent) {
-        return assemblyConstructor.chooseComponent(componentService.getComponentById((long) chosenComponent));
+        return chooseComponent(componentService.getComponentById((long) chosenComponent));
     }
 }
